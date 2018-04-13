@@ -33,14 +33,21 @@ public class Brain : MonoBehaviour
 		seeWall = false;
 		RaycastHit hit;
 		Debug.DrawRay(eyes.transform.position, eyes.transform.forward * 0.5f, Color.red, 10);
+		
+		// Using Raycast
+		// Raycast(startPosition, direction, hit, maxDistance)
+		/*if (Physics.Raycast(eyes.transform.position, eyes.transform.forward, out hit, 0.5f))
+		{
+			if (hit.collider.gameObject.tag == "wall")
+				seeWall = true;
+		}*/
+
 		if (Physics.SphereCast(eyes.transform.position, 0.1f, eyes.transform.forward, out hit, 0.5f))
 		{
 			if (hit.collider.gameObject.tag == "wall")
 				seeWall = true;
 		}
-			
-		
-    }
+	}
 	private void FixedUpdate()
 	{
 		if (!alive) return;
